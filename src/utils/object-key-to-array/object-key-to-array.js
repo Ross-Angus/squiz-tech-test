@@ -1,5 +1,3 @@
-import camelToSentenceCase from '../camel-to-sentence-case/camel-to-sentence-case.js';
-
 // This is passed an object and returns an Array of the `name` values. For example,
 // this object:
 
@@ -11,11 +9,10 @@ import camelToSentenceCase from '../camel-to-sentence-case/camel-to-sentence-cas
 // ... would return the following Array:
 
 // ["key-name", "another-key-name"]
-
 const objectKeyToArray = (obj) => {
   let arr = [];
   for (let key in obj) {
-    arr.push(camelToSentenceCase(key));
+    arr.push(key);
   }
   return arr;
 };

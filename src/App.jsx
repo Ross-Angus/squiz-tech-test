@@ -13,7 +13,7 @@ import SortButton from './components/Table/SortButton.jsx';
 
 function App() {
   const [clientList, setClientList] = useState();
-  // We only want to run `CacheData()` on first render
+  // We only want `CacheData()` to run on first render
   useEffect(() => { CacheData(setClientList) }, []);
 
   let keyArray = [];
@@ -31,7 +31,7 @@ function App() {
                 {keyArray.map(name => {
                   return (
                     <HeaderCell key={name} scope="col">
-                      <SortButton name={name}/>
+                      <SortButton name={name} tableData={clientList} update={setClientList}/>
                     </HeaderCell>
                   )
                 })}
