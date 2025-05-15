@@ -1,6 +1,6 @@
 const HeaderCell = (props) => {
   return (
-    <th>
+    <th scope={props.scope}>
       {props.children}
     </th>
   )
