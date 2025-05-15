@@ -7,7 +7,6 @@ const CacheData = (update) => {
   const localDataString = localStorage.getItem("cachedData");
   const localData = JSON.parse(localDataString);
   const cacheTime = localStorage.getItem("cacheTime");
-  console.log(localData, cacheTime);
   // If the cached copy is older than this number of DAYS, a new version of the data
   // will be fetched
   const maxAge = 1;
