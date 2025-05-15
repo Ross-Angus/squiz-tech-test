@@ -6,6 +6,8 @@ const CacheData = (update) => {
   const dataURI = "https://dujour.squiz.cloud/developer-challenge/data";
   const localDataString = localStorage.getItem("cachedData");
   const localData = JSON.parse(localDataString);
+  const cacheTime = localStorage.getItem("cacheTime");
+  console.log(localData, cacheTime);
   // If the cached copy is older than this number of DAYS, a new version of the data
   // will be fetched
   const maxAge = 1;
@@ -15,19 +17,18 @@ const CacheData = (update) => {
       .then(response => response.json())
       .then(array => {
         // Adding a last downloaded date
-        array.push({"updated": Date.now()});
         update(array);
         localStorage.setItem("cachedData", JSON.stringify(array));
+        localStorage.setItem("cacheTime", Date.now());
     });
   };
 
   // Valid data found locally
-  if (localDataString) {
+  if (localDataString && cacheTime) {
     // Is it old enough to warrant a fresh copy?
-    // Get time string from local data
-    const lastUpdated = localData[localData.length - 1].updated;
     const millisecondsInDay = 1000 * 60 * 24;
-    const cacheAge = Date.now() - lastUpdated;
+    const cacheAge = Date.now() - cacheTime;
+    // Cached data is older than the specified maximum age
     if ((maxAge * millisecondsInDay) < cacheAge) {
       fetchData();
     } else {
