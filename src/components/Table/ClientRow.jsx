@@ -1,7 +1,8 @@
 import HeaderCell from './HeaderCell';
 import DataCell from './DataCell';
 
-const Row = (props) => {
+// This is for rendering out a single snippet of JSON
+const ClientRow = (props) => {
   const {rowData} = props;
 
   let cols = [];
@@ -19,4 +20,4 @@ const Row = (props) => {
   )
 };
 
-export default Row;
+export default ClientRow;
