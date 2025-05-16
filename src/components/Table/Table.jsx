@@ -15,9 +15,9 @@ const Table = ({ caption, headerRow, clientList, setClientList }) => {
     if (bool === undefined) {
       return;
     } else if (bool === true) {
-      return "sort-up";
+      return "sort-ascending";
     } else {
-      return "sort-down";
+      return "sort-descending ";
     }
   }
 
