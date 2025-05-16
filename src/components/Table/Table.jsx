@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import classes from './table.module.css';
 import Thead from './Thead.jsx';
 import Tbody from './Tbody.jsx';
 import Row from './Row.jsx';
@@ -15,15 +16,15 @@ const Table = ({ caption, headerRow, clientList, setClientList }) => {
     if (bool === undefined) {
       return;
     } else if (bool === true) {
-      return "sort-ascending";
+      return classes.sortAscending;
     } else {
-      return "sort-descending ";
+      return classes.sortDescending;
     }
   }
 
   return (
     <table className={boolClass(sortDirection)}>
-      <caption>{sortDirection} {caption}</caption>
+      <caption>{caption}</caption>
       <Thead>
         <Row>
           {headerRow.map(name => {

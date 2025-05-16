@@ -1,0 +1,23 @@
+table {
+  transition: all 0.5s;
+  --solid: rgb(256 256 256 / 0.2);
+  --st: transparent;
+  --size: 50px;
+}
+
+.sortDescending {
+	background-image:
+    repeating-linear-gradient(180deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2)),
+    repeating-linear-gradient(240deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2)),
+    repeating-linear-gradient(-60deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2))
+}
+
+/* .sortAscending {
+60 - bottom left
+240 - top right
+420 - bottom left
+-120 - top right
+
+-60 - bottom left
+120 - top left
+} */
