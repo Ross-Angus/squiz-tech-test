@@ -9,6 +9,7 @@ import SortButton from './SortButton.jsx';
 
 const Table = ({ caption, headerRow, clientList, setClientList }) => {
   const [sortDirection, setSortDirection] = useState();
+  const [sortTerm, setSortTerm] = useState('');
 
   // For ensuring that the table has either no class, or a class which
   // reflects the sorting direction
@@ -29,8 +30,8 @@ const Table = ({ caption, headerRow, clientList, setClientList }) => {
         <Row>
           {headerRow.map(name => {
             return (
-              <HeaderCell key={name} scope="col">
-                <SortButton name={name} tableData={clientList} update={setClientList} sortDirection={sortDirection} setSortDirection={setSortDirection}/>
+              <HeaderCell key={name} scope="col" className={sortTerm === name ? classes.selected: null}>
+                <SortButton name={name} tableData={clientList} update={setClientList} sortDirection={sortDirection} setSortDirection={setSortDirection} setSortTerm={setSortTerm}/>
               </HeaderCell>
             )
           })}
@@ -38,7 +39,7 @@ const Table = ({ caption, headerRow, clientList, setClientList }) => {
       </Thead>
       <Tbody>
         {clientList.map(client => (
-          <ClientRow rowData={client} key={client.id}/>
+          <ClientRow rowData={client} key={client.id} sortTerm={sortTerm}/>
         ))}
       </Tbody>
     </table>

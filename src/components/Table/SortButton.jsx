@@ -1,6 +1,6 @@
 import camelToSentenceCase from '../../utils/camel-to-sentence-case/camel-to-sentence-case.js';
 
-const SortButton = ({ name, tableData, update, sortDirection, setSortDirection }) => {
+const SortButton = ({ name, tableData, update, sortDirection, setSortDirection, setSortTerm }) => {
 
   const handleSort = (type) => {
     const data = [...tableData].sort((a, b) => {
@@ -17,6 +17,7 @@ const SortButton = ({ name, tableData, update, sortDirection, setSortDirection }
     // Flip the sorting (sorting is intentionally unset when initialised so that the data
     // is ordered "naturally"
     sortDirection === undefined ? setSortDirection(true) : setSortDirection(!sortDirection);
+    setSortTerm(type);
     update(data);
   };
 

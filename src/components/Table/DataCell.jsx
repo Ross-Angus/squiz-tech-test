@@ -1,6 +1,6 @@
 const DataCell = (props) => {
   return (
-    <td>
+    <td className={props.className}>
       {props.children}
     </td>
   )

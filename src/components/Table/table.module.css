@@ -1,23 +1,49 @@
 table {
-  transition: all 0.5s;
   --solid: rgb(256 256 256 / 0.2);
   --st: transparent;
-  --size: 50px;
+
+  background-size: 2rem 1rem;
+  border-collapse: collapse;
+  transition: all 0.5s;
+
+}
+
+th, td {
+  backdrop-filter: brightness(50%);
 }
 
 .sortDescending {
 	background-image:
-    repeating-linear-gradient(180deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2)),
-    repeating-linear-gradient(240deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2)),
-    repeating-linear-gradient(-60deg, var(--st) 0, var(--st) var(--size), var(--solid) var(--size), var(--solid) calc(var(--size) * 2))
+    linear-gradient(225deg,
+      var(--st) 0,
+      var(--st) 20%,
+      var(--solid) 20%,
+      var(--solid) 25%,
+      var(--st) 25%),
+    linear-gradient(135deg,
+      var(--st) 0,
+      var(--st) 20%,
+      var(--solid) 20%,
+      var(--solid) 25%,
+      var(--st) 25%);
 }
 
-/* .sortAscending {
-60 - bottom left
-240 - top right
-420 - bottom left
--120 - top right
+.sortAscending {
+	background-image:
+    linear-gradient(45deg,
+      var(--st) 0,
+      var(--st) 20%,
+      var(--solid) 20%,
+      var(--solid) 25%,
+      var(--st) 25%),
+    linear-gradient(315deg,
+      var(--st) 0,
+      var(--st) 20%,
+      var(--solid) 20%,
+      var(--solid) 25%,
+      var(--st) 25%);
+}
 
--60 - bottom left
-120 - top left
-} */
+.selected {
+  backdrop-filter: none;
+}
