@@ -1,0 +1,11 @@
+button::after {
+  font-size: 1.5em;
+  line-height: 0;
+}
+
+.sortAscending::after {
+  content: " ⇡";
+}
+.sortDescending::after {
+  content: " ⇣";
+}

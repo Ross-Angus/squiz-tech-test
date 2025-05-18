@@ -1,47 +1,10 @@
 table {
-  --solid: rgb(256 256 256 / 0.2);
-  --st: transparent;
-
-  background-size: 2rem 1rem;
   border-collapse: collapse;
-  transition: all 0.5s;
-
 }
 
 th, td {
   backdrop-filter: brightness(50%);
-}
-
-.sortDescending {
-	background-image:
-    linear-gradient(225deg,
-      var(--st) 0,
-      var(--st) 20%,
-      var(--solid) 20%,
-      var(--solid) 25%,
-      var(--st) 25%),
-    linear-gradient(135deg,
-      var(--st) 0,
-      var(--st) 20%,
-      var(--solid) 20%,
-      var(--solid) 25%,
-      var(--st) 25%);
-}
-
-.sortAscending {
-	background-image:
-    linear-gradient(45deg,
-      var(--st) 0,
-      var(--st) 20%,
-      var(--solid) 20%,
-      var(--solid) 25%,
-      var(--st) 25%),
-    linear-gradient(315deg,
-      var(--st) 0,
-      var(--st) 20%,
-      var(--solid) 20%,
-      var(--solid) 25%,
-      var(--st) 25%);
+  padding: 0.25rem 0.5rem;
 }
 
 .selected {

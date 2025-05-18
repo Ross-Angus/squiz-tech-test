@@ -1,6 +1,7 @@
+import classes from './sortbutton.module.css';
 import camelToSentenceCase from '../../utils/camel-to-sentence-case/camel-to-sentence-case.js';
 
-const SortButton = ({ name, tableData, update, sortDirection, setSortDirection, setSortTerm }) => {
+const SortButton = ({ name, tableData, update, sortDirection, setSortDirection, sortTerm, setSortTerm }) => {
 
   const handleSort = (type) => {
     const data = [...tableData].sort((a, b) => {
@@ -21,8 +22,28 @@ const SortButton = ({ name, tableData, update, sortDirection, setSortDirection, 
     update(data);
   };
 
+  // For ensuring that the table has either no class, or a class which
+  // reflects the sorting direction
+  const boolClass = (name) => {
+    if (sortDirection && name === sortTerm) {
+      return classes.sortAscending;
+    } else if (!sortDirection && name === sortTerm) {
+      return classes.sortDescending;
+    }
+  }
+
+  // Generates title text for the sort button
+  const sortTitle = buttonName => {
+    const direction = sortDirection ? 'descending' : 'ascending';
+    if (sortDirection === undefined) {
+      return `Sort ${buttonName} in ascending order`;
+    } else {
+      return `Sort ${buttonName} in ${direction} order`;
+    }
+  }
+
   return (
-    <button type="button" onClick={() => handleSort(name)}>
+    <button type="button" onClick={() => handleSort(name)} className={boolClass(name)} title={sortTitle(camelToSentenceCase(name))}>
       {camelToSentenceCase(name)}
     </button>
   )

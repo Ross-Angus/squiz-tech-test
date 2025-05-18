@@ -11,27 +11,15 @@ const Table = ({ caption, headerRow, clientList, setClientList }) => {
   const [sortDirection, setSortDirection] = useState();
   const [sortTerm, setSortTerm] = useState('');
 
-  // For ensuring that the table has either no class, or a class which
-  // reflects the sorting direction
-  const boolClass = (bool) => {
-    if (bool === undefined) {
-      return;
-    } else if (bool === true) {
-      return classes.sortAscending;
-    } else {
-      return classes.sortDescending;
-    }
-  }
-
   return (
-    <table className={boolClass(sortDirection)}>
+    <table>
       <caption>{caption}</caption>
       <Thead>
         <Row>
           {headerRow.map(name => {
             return (
               <HeaderCell key={name} scope="col" className={sortTerm === name ? classes.selected: null}>
-                <SortButton name={name} tableData={clientList} update={setClientList} sortDirection={sortDirection} setSortDirection={setSortDirection} setSortTerm={setSortTerm}/>
+                <SortButton name={name} tableData={clientList} update={setClientList} sortDirection={sortDirection} setSortDirection={setSortDirection} sortTerm={sortTerm} setSortTerm={setSortTerm}/>
               </HeaderCell>
             )
           })}
