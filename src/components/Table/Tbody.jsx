@@ -1,8 +1,8 @@
 const TBody = (props) => {
   return (
-    <thead>
+    <tbody>
       {props.children}
-    </thead>
+    </tbody>
   )
 };
 

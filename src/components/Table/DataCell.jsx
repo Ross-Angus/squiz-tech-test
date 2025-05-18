@@ -1,6 +1,8 @@
 const DataCell = (props) => {
+  const label = props.label;
+
   return (
-    <td className={props.className}>
+    <td className={props.className} data-label={label}>
       {props.children}
     </td>
   )

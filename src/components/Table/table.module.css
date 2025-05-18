@@ -10,3 +10,36 @@ th, td {
 .selected {
   backdrop-filter: none;
 }
+
+@media (width < 70rem) {
+  table, thead, tbody, tr, th, td {
+    display: block;
+    text-align: left;
+  }
+
+  tr {
+    margin: 0 0 1rem;
+  }
+
+  thead tr {
+    backdrop-filter: brightness(50%);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  thead th {
+    backdrop-filter: none;
+  }
+
+  tbody td, tbody th, thead tr {
+    display: flex;
+  }
+
+  td:before, th:before {
+    content: attr(data-label);
+    flex: 0 0 50%;
+    font-weight: bold;
+    padding: 0 1rem;
+    text-align: right;
+  }
+}
