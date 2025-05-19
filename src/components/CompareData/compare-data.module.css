@@ -71,11 +71,6 @@
 .key {
   display: table;
 }
-.key::before {
-  content: attr(aria-label);
-  display: block;
-  font-weight: bold;
-}
 
 .key dl {
   display: table-row;

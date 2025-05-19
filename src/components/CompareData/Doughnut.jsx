@@ -88,7 +88,7 @@ const Doughnut = ({ data, selectedTypes }) => {
     const zeroHasNumber = intCheck(set0);
     const oneHasNumber = intCheck(set1);
 
-    // We've found numeric data on one of the nested Arrays
+    // We've found numeric data in one of the nested Arrays
     if (zeroHasNumber || oneHasNumber) {
       let a, b;
       if (zeroHasNumber) {
@@ -110,20 +110,22 @@ const Doughnut = ({ data, selectedTypes }) => {
           checked.push(label);
         }
       });
-      //generateStyleObj(result);
+      result.sort((a, b) => b[1] - a[1]);
       setChartData(result);
     }
 
     // We've found duplicate string values in set 0
     else if (duplicateCheck(set0)) {
-      //generateStyleObj(returnDuplicationLog(set0));
-      setChartData(returnDuplicationLog(set0));
+      const result = returnDuplicationLog(set0);
+      result.sort((a, b) => b[1] - a[1]);
+      setChartData(result);
     }
 
     // We've found duplicate string values in set 1
     else if (duplicateCheck(set1)) {
-      //generateStyleObj(returnDuplicationLog(set1));
-      setChartData(returnDuplicationLog(set1));
+      const result = returnDuplicationLog(set1);
+      result.sort((a, b) => b[1] - a[1]);
+      setChartData(result);
     }
 
     else {
@@ -137,7 +139,7 @@ const Doughnut = ({ data, selectedTypes }) => {
 
   return (
     <figure className={classes.pie}>
-      <p style={styleObject}>Hullo</p>
+      <p style={styleObject}>{`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}</p>
       <section className={classes.key} aria-label={`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}>
         {chartData.map((entry, index) => (
           <dl key={index}>

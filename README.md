@@ -1,3 +1,5 @@
+To do: fix NAME by ID compare
+
 We would like you to create an interactive dashboard that visualizes data from an API. The dashboard should provide users with key insights and allow them to interact with the data dynamically.
 
 ## Requirements:
