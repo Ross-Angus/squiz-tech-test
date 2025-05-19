@@ -1,10 +1,14 @@
+import { useState, useEffect } from 'react';
 import camelToSentenceCase from '../../utils/camel-to-sentence-case/camel-to-sentence-case.js';
 import classes from './compare-data.module.css';
 
 const Doughnut = ({ data, selectedTypes }) => {
 
+  // This Array represents the result of the user's filter choices
+  const [ chartData, setChartData ] = useState([]);
   // This will contain the CSS variables to generate the doughnut chart
-  let styleObj = {};
+  const [ styleObject, setStyleObject ] = useState({});
+
 
   // Checks an Array to see if it has duplicate values
   const duplicateCheck = (array) => (new Set(array)).size !== array.length;
@@ -61,7 +65,7 @@ const Doughnut = ({ data, selectedTypes }) => {
   const generateStyleObj = arr => {
     // This will be the total of all the values being compared
     let total = 0;
-    styleObj = {};
+    const obj = {};
     arr.map(entry => {
       total += entry[1];
     });
@@ -71,13 +75,14 @@ const Doughnut = ({ data, selectedTypes }) => {
     arr.map((item, index) => {
       const itemSize = item[1] * unit;
       percentTotal += itemSize;
-      styleObj[`--value${index + 1}`] = `${percentTotal}%`;
+      obj[`--value${index + 1}`] = `${percentTotal}%`;
     });
+    setStyleObject(obj);
   };
 
-  // This attempts to split the data into a category which labels the
-  // data and the value of the data
-  const init = () => {
+  // This attempts to split the data into two categories: something
+  // which can be counted and something which acts as a label
+  const generateChartData = () => {
     const set0 = getNestedArrayItem(data, 0);
     const set1 = getNestedArrayItem(data, 1);
     const zeroHasNumber = intCheck(set0);
@@ -105,17 +110,20 @@ const Doughnut = ({ data, selectedTypes }) => {
           checked.push(label);
         }
       });
-      generateStyleObj(result);
+      //generateStyleObj(result);
+      setChartData(result);
     }
 
     // We've found duplicate string values in set 0
     else if (duplicateCheck(set0)) {
-      generateStyleObj(returnDuplicationLog(set0));
+      //generateStyleObj(returnDuplicationLog(set0));
+      setChartData(returnDuplicationLog(set0));
     }
 
     // We've found duplicate string values in set 1
     else if (duplicateCheck(set1)) {
-      generateStyleObj(returnDuplicationLog(set1));
+      //generateStyleObj(returnDuplicationLog(set1));
+      setChartData(returnDuplicationLog(set1));
     }
 
     else {
@@ -124,11 +132,12 @@ const Doughnut = ({ data, selectedTypes }) => {
     }
   };
 
-  init();
+  useEffect(() => { generateChartData() }, [selectedTypes]);
+  useEffect(() => { generateStyleObj(chartData) }, [chartData]);
 
   return (
     <figure className={classes.pie}>
-      <p style={styleObj}>Hullo</p>
+      <p style={styleObject}>Hullo</p>
       <section className={classes.key} aria-label="Key">
         {data.map((entry, index) => (
           <dl key={index}>
