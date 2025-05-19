@@ -151,6 +151,30 @@ const Doughnut = ({ data, selectedTypes }) => {
   return (
     <figure className={classes.pie}>
       <p style={{
+        "--value": "10%", "--barColour": "LightCoral",
+        "--value2": "17%", "--barColour2": "DarkSalmon",
+        "--value3": "21%", "--barColour3": "LightSalmon",
+        "--value4": "31%", "--barColour4": "FireBrick",
+        "--value5": "75%", "--barColour5": "Crimson",
+        "--value6": "98%", "--barColour6": "IndianRed",
+      }}>Hullo</p>
+      <section className={classes.key} aria-label="Key">
+        {data.map((entry, index) => (
+          <dl key={index}>
+            <dt>{Object.keys(entry)}</dt>
+            <dd>{entry[Object.keys(entry)]}</dd>
+          </dl>
+        ))}
+      </section>
+      <figcaption>Data comparison of {camelToSentenceCase(selectedTypes[0])} with {camelToSentenceCase(selectedTypes[1])}</figcaption>
+    </figure>
+  )
+};
+
+export default Doughnut;
+
+/*
+{
     "--value1": "5%",
     "--value2": "10%",
     "--value3": "15%",
@@ -171,18 +195,5 @@ const Doughnut = ({ data, selectedTypes }) => {
     "--value18": "90%",
     "--value19": "95%",
     "--value20": "100%",
-  }}>Hullo</p>
-      <section className={classes.key} aria-label="Key">
-        {data.map((entry, index) => (
-          <dl key={index}>
-            <dt>{Object.keys(entry)}</dt>
-            <dd>{entry[Object.keys(entry)]}</dd>
-          </dl>
-        ))}
-      </section>
-      <figcaption>Data comparison of {camelToSentenceCase(selectedTypes[0])} with {camelToSentenceCase(selectedTypes[1])}</figcaption>
-    </figure>
-  )
-};
-
-export default Doughnut;
+  }
+*/
