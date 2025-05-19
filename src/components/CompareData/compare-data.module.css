@@ -1,0 +1,40 @@
+.pie {
+  --barColour: Crimson;
+  --barColour2: DarkRed;
+  --barColour3: FireBrick;
+  --barColour4: IndianRed;
+  --barColour5: LightCoral;
+  --barColour6: Maroon;
+}
+
+.pie p {
+  align-items: center;
+  aspect-ratio: 1;
+  background:
+     conic-gradient(var(--bg-body) 0, var(--bg-body) 0) padding-box,
+     conic-gradient(
+       var(--barColour) var(--value),
+       var(--barColour2, transparent) var(--value) var(--value2, 100%),
+       var(--barColour3, transparent) var(--value2, 100%) var(--value3, 100%),
+       var(--barColour4, transparent) var(--value3, 100%) var(--value4, 100%),
+       var(--barColour5, transparent) var(--value4, 100%) var(--value5, 100%),
+       var(--barColour6, transparent) var(--value5, 100%) var(--value6, 100%),
+       transparent var(--value6, 100%) 100%
+     ) border-box;
+  /* This transparent border represents the width of the doughnut */
+  border: solid 1em transparent;
+  border-radius: 50%;
+  display: flex;
+  flex: 1;
+  font-weight: bold;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.pieChoice p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

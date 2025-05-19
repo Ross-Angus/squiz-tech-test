@@ -4,6 +4,7 @@ import CONSTANTS from './global/constants.json';
 import objectKeyToArray from './utils/object-key-to-array/object-key-to-array.js';
 import CacheData from './components/CacheData/CacheData.js';
 import Table from './components/Table/Table.jsx';
+import CompareData from './components/CompareData/CompareData.jsx';
 
 function App() {
   const [clientList, setClientList] = useState();
@@ -19,6 +20,7 @@ function App() {
     <>
       {clientList ? (
         <>
+          <CompareData data={clientList} types={keyArray}/>
           <Table caption={CONSTANTS.DATA_NAME} headerRow={keyArray} clientList={clientList} setClientList={setClientList}/>
         </>
       ) : "Loading"}
