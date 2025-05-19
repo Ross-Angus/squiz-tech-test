@@ -138,11 +138,11 @@ const Doughnut = ({ data, selectedTypes }) => {
   return (
     <figure className={classes.pie}>
       <p style={styleObject}>Hullo</p>
-      <section className={classes.key} aria-label="Key">
-        {data.map((entry, index) => (
+      <section className={classes.key} aria-label={`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}>
+        {chartData.map((entry, index) => (
           <dl key={index}>
-            <dt>{Object.keys(entry)}</dt>
-            <dd>{entry[Object.keys(entry)]}</dd>
+            <dt><strong>{entry[1]}</strong></dt>
+            <dd>{entry[0]}</dd>
           </dl>
         ))}
       </section>

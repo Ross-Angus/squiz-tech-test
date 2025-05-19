@@ -68,6 +68,9 @@
 }
 
 /* The key which explains the colours */
+.key {
+  display: table;
+}
 .key::before {
   content: attr(aria-label);
   display: block;
@@ -75,7 +78,26 @@
 }
 
 .key dl {
-  display: flex;
+  display: table-row;
+}
+
+.key dt, .key dd {
+  display: table-cell;
+}
+
+.key dt {
+  padding: 0 0.5rem;
+  text-align: right;
+}
+
+.key dt strong {
+  background: var(--bg-body);
+  padding: 0.2rem 0.5rem;
+}
+
+.key dd {
+  padding: 0.2rem 0.5rem;
+  text-align: left;
 }
 
 .key dl:nth-child(1) dt { background: var(--barColour1);}
