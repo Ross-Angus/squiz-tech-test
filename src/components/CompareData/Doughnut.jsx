@@ -4,28 +4,7 @@ import classes from './compare-data.module.css';
 const Doughnut = ({ data, selectedTypes }) => {
 
   // This will contain the CSS variables to generate the doughnut chart
-  let styleObj = {
-    "--value1": "5%",
-    "--value2": "10%",
-    "--value3": "15%",
-    "--value4": "20%",
-    "--value5": "25%",
-    "--value6": "30%",
-    "--value7": "35%",
-    "--value8": "40%",
-    "--value9": "45%",
-    "--value10": "50%",
-    "--value11": "55%",
-    "--value12": "60%",
-    "--value13": "65%",
-    "--value14": "70%",
-    "--value15": "75%",
-    "--value16": "80%",
-    "--value17": "85%",
-    "--value18": "90%",
-    "--value19": "95%",
-    "--value20": "100%",
-  };
+  let styleObj = {};
 
   // Checks an Array to see if it has duplicate values
   const duplicateCheck = (array) => (new Set(array)).size !== array.length;
@@ -82,7 +61,7 @@ const Doughnut = ({ data, selectedTypes }) => {
   const generateStyleObj = arr => {
     // This will be the total of all the values being compared
     let total = 0;
-    const styleObj2 = {};
+    styleObj = {};
     arr.map(entry => {
       total += entry[1];
     });
@@ -92,9 +71,8 @@ const Doughnut = ({ data, selectedTypes }) => {
     arr.map((item, index) => {
       const itemSize = item[1] * unit;
       percentTotal += itemSize;
-      styleObj2[`--value${index + 1}`] = `${percentTotal}%`;
+      styleObj[`--value${index + 1}`] = `${percentTotal}%`;
     });
-    console.log(styleObj2);
   };
 
   // This attempts to split the data into a category which labels the
@@ -150,14 +128,7 @@ const Doughnut = ({ data, selectedTypes }) => {
 
   return (
     <figure className={classes.pie}>
-      <p style={{
-        "--value": "10%", "--barColour": "LightCoral",
-        "--value2": "17%", "--barColour2": "DarkSalmon",
-        "--value3": "21%", "--barColour3": "LightSalmon",
-        "--value4": "31%", "--barColour4": "FireBrick",
-        "--value5": "75%", "--barColour5": "Crimson",
-        "--value6": "98%", "--barColour6": "IndianRed",
-      }}>Hullo</p>
+      <p style={styleObj}>Hullo</p>
       <section className={classes.key} aria-label="Key">
         {data.map((entry, index) => (
           <dl key={index}>
@@ -172,28 +143,3 @@ const Doughnut = ({ data, selectedTypes }) => {
 };
 
 export default Doughnut;
-
-/*
-{
-    "--value1": "5%",
-    "--value2": "10%",
-    "--value3": "15%",
-    "--value4": "20%",
-    "--value5": "25%",
-    "--value6": "30%",
-    "--value7": "35%",
-    "--value8": "40%",
-    "--value9": "45%",
-    "--value10": "50%",
-    "--value11": "55%",
-    "--value12": "60%",
-    "--value13": "65%",
-    "--value14": "70%",
-    "--value15": "75%",
-    "--value16": "80%",
-    "--value17": "85%",
-    "--value18": "90%",
-    "--value19": "95%",
-    "--value20": "100%",
-  }
-*/

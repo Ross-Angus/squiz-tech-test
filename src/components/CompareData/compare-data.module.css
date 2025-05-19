@@ -28,15 +28,29 @@
   background:
     conic-gradient(var(--bg-body) 0, var(--bg-body) 0) padding-box,
     conic-gradient(
-      var(--barColour) var(--value),
-      var(--barColour2, transparent) var(--value) var(--value2, 100%),
+      var(--barColour1) var(--value1),
+      var(--barColour2, transparent) var(--value1) var(--value2, 100%),
       var(--barColour3, transparent) var(--value2, 100%) var(--value3, 100%),
       var(--barColour4, transparent) var(--value3, 100%) var(--value4, 100%),
       var(--barColour5, transparent) var(--value4, 100%) var(--value5, 100%),
       var(--barColour6, transparent) var(--value5, 100%) var(--value6, 100%),
-      transparent var(--value6, 100%) 100%
+      var(--barColour7, transparent) var(--value6, 100%) var(--value7, 100%),
+      var(--barColour8, transparent) var(--value7, 100%) var(--value8, 100%),
+      var(--barColour9, transparent) var(--value8, 100%) var(--value9, 100%),
+      var(--barColour10, transparent) var(--value9, 100%) var(--value10, 100%),
+      var(--barColour11, transparent) var(--value10, 100%) var(--value11, 100%),
+      var(--barColour12, transparent) var(--value11, 100%) var(--value12, 100%),
+      var(--barColour13, transparent) var(--value12, 100%) var(--value13, 100%),
+      var(--barColour14, transparent) var(--value13, 100%) var(--value14, 100%),
+      var(--barColour15, transparent) var(--value14, 100%) var(--value15, 100%),
+      var(--barColour16, transparent) var(--value15, 100%) var(--value16, 100%),
+      var(--barColour17, transparent) var(--value16, 100%) var(--value17, 100%),
+      var(--barColour18, transparent) var(--value17, 100%) var(--value18, 100%),
+      var(--barColour19, transparent) var(--value18, 100%) var(--value19, 100%),
+      var(--barColour20, transparent) var(--value19, 100%) var(--value20, 100%),
+      transparent var(--value20, 100%) 100%
     ) border-box;
-  /*/ This transparent border represents the width of the doughnut*/
+  /* This transparent border represents the width of the doughnut*/
   border: solid 1em transparent;
   border-radius: 50%;
   display: flex;
