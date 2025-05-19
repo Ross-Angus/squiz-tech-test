@@ -1,3 +1,4 @@
+/* This doughnut chart can display no more than 20 different values */
 .pie {
   --barColour: Crimson;
   --barColour2: DarkRed;
@@ -5,6 +6,20 @@
   --barColour4: IndianRed;
   --barColour5: LightCoral;
   --barColour6: Maroon;
+  --barColour7: Brown;
+  --barColour8: Chocolate;
+  --barColour9: Coral;
+  --barColour10: DarkMagenta;
+  --barColour11: DarkOrange;
+  --barColour12: DarkOrchid;
+  --barColour13: DarkSalmon;
+  --barColour14: DarkViolet;
+  --barColour15: DeepPink;
+  --barColour16: Fuchsia;
+  --barColour17: HotPink;
+  --barColour18: LightPink;
+  --barColour19: LightSalmon;
+  --barColour20: MediumOrchid;
 }
 
 .pie p {
@@ -19,10 +34,24 @@
        var(--barColour4, transparent) var(--value3, 100%) var(--value4, 100%),
        var(--barColour5, transparent) var(--value4, 100%) var(--value5, 100%),
        var(--barColour6, transparent) var(--value5, 100%) var(--value6, 100%),
-       transparent var(--value6, 100%) 100%
+       var(--barColour7, transparent) var(--value6, 100%) var(--value7, 100%),
+       var(--barColour8, transparent) var(--value7, 100%) var(--value8, 100%),
+       var(--barColour9, transparent) var(--value8, 100%) var(--value9, 100%),
+       var(--barColour10, transparent) var(--value9, 100%) var(--value10, 100%),
+       var(--barColour11, transparent) var(--value10, 100%) var(--value11, 100%),
+       var(--barColour12, transparent) var(--value11, 100%) var(--value12, 100%),
+       var(--barColour13, transparent) var(--value12, 100%) var(--value13, 100%),
+       var(--barColour14, transparent) var(--value13, 100%) var(--value14, 100%),
+       var(--barColour15, transparent) var(--value14, 100%) var(--value15, 100%),
+       var(--barColour16, transparent) var(--value15, 100%) var(--value16, 100%),
+       var(--barColour17, transparent) var(--value16, 100%) var(--value17, 100%),
+       var(--barColour18, transparent) var(--value17, 100%) var(--value18, 100%),
+       var(--barColour19, transparent) var(--value18, 100%) var(--value19, 100%),
+       var(--barColour20, transparent) var(--value19, 100%) var(--value20, 100%),
+       transparent var(--value20, 100%) 100%
      ) border-box;
   /* This transparent border represents the width of the doughnut */
-  border: solid 1em transparent;
+  border: solid 1rem transparent;
   border-radius: 50%;
   display: flex;
   flex: 1;
@@ -38,3 +67,35 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+/* The key which explains the colours */
+.key::before {
+  content: attr(aria-label);
+  display: block;
+  font-weight: bold;
+}
+
+.key dl {
+  display: flex;
+}
+
+.key dl:nth-child(1) dt { background: var(--barColour);}
+.key dl:nth-child(2) dt { background: var(--barColour2);}
+.key dl:nth-child(3) dt { background: var(--barColour3);}
+.key dl:nth-child(4) dt { background: var(--barColour4);}
+.key dl:nth-child(5) dt { background: var(--barColour5);}
+.key dl:nth-child(6) dt { background: var(--barColour6);}
+.key dl:nth-child(7) dt { background: var(--barColour7);}
+.key dl:nth-child(8) dt { background: var(--barColour8);}
+.key dl:nth-child(9) dt { background: var(--barColour9);}
+.key dl:nth-child(10) dt { background: var(--barColour10);}
+.key dl:nth-child(11) dt { background: var(--barColour11);}
+.key dl:nth-child(12) dt { background: var(--barColour12);}
+.key dl:nth-child(13) dt { background: var(--barColour13);}
+.key dl:nth-child(14) dt { background: var(--barColour14);}
+.key dl:nth-child(15) dt { background: var(--barColour15);}
+.key dl:nth-child(16) dt { background: var(--barColour16);}
+.key dl:nth-child(17) dt { background: var(--barColour17);}
+.key dl:nth-child(18) dt { background: var(--barColour18);}
+.key dl:nth-child(19) dt { background: var(--barColour19);}
+.key dl:nth-child(20) dt { background: var(--barColour20);}

@@ -1,9 +1,32 @@
-import { useState } from 'react';
-import classes from './compare-data.module.css';
+import { useState, useEffect } from 'react';
 import ChooseType from './ChooseType.jsx';
+import Doughnut from './Doughnut.jsx';
+import classes from './compare-data.module.css';
 
 const CompareData = ({data, types}) => {
   const [ selectedTypes, setSelectedTypes ] = useState([]);
+
+  // We need to update the selected data when the selected types updates
+  useEffect(() => { selectedData() }, [selectedTypes]);
+
+  // This is the subset of data based on the user's selections
+  const selectedData = () => {
+    const chartData = [];
+    data.map(client => {
+      let newName;
+      let newValue;
+      for (const key in client) {
+        if (key === selectedTypes[0]) newName = client[key];
+        if (key === selectedTypes[1]) newValue = client[key];
+      }
+
+      // Has the user chosen some data?
+      if (newName !== undefined && newValue !== undefined) {
+        chartData.push({ [newName]: newValue });
+      }
+    });
+    return chartData;
+  }
 
   const clearSelectedTypes = () => {
     setSelectedTypes([]);
@@ -19,10 +42,7 @@ const CompareData = ({data, types}) => {
         </p>
       </fieldset>
       {selectedTypes.length > 1 && (
-        <figure className={classes.pie}>
-          <p>&nbsp;</p>
-            <figcaption>Data comparison of {selectedTypes[0]} with {selectedTypes[1]}</figcaption>
-        </figure>
+        <Doughnut data={selectedData()} selectedTypes={selectedTypes}/>
       )}
     </>
   )
