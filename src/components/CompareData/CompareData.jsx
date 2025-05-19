@@ -9,20 +9,24 @@ const CompareData = ({data, types}) => {
   // We need to update the selected data when the selected types updates
   useEffect(() => { selectedData() }, [selectedTypes]);
 
-  // This is the subset of data based on the user's selections
+  // This is the subset of data based on the user's selections. It's an
+  // Array with each data point being a nested Array inside. This nested
+  // Array has two elements, the first corresponds to the first data
+  // type the user selected, and the second element is the second data
+  // type.
   const selectedData = () => {
     const chartData = [];
     data.map(client => {
-      let newName;
-      let newValue;
+      let data1;
+      let data2;
       for (const key in client) {
-        if (key === selectedTypes[0]) newName = client[key];
-        if (key === selectedTypes[1]) newValue = client[key];
+        if (key === selectedTypes[0]) data1 = client[key];
+        if (key === selectedTypes[1]) data2 = client[key];
       }
 
       // Has the user chosen some data?
-      if (newName !== undefined && newValue !== undefined) {
-        chartData.push({ [newName]: newValue });
+      if (data1 !== undefined && data2 !== undefined) {
+        chartData.push([ data1, data2 ]);
       }
     });
     return chartData;

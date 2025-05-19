@@ -16,119 +16,91 @@ const Doughnut = ({ data, selectedTypes }) => {
     return result;
   };
 
-  // This is passed an Array of objects and returns an Array which contains
-  // just the keys
-  const getKeys = array => {
+  // This is passed an Array and an index and extracts all elements which
+  // appear at a specified index on Arrays nested within it.
+  const getNestedArrayItem = (arr, index) => {
     const result = [];
-    array.map(entry => {
-      // Gentle convert to number
-      // I want to convert "123" to 123 but not "1 Castle Street" to 1
-      const key = Object.keys(entry)[0];
-      const numKey = parseInt(key);
-      // Legitimate use of double equals - I want to check for equivalence
-      // but not type equivalence.
-      key == numKey ? result.push(numKey) : result.push(key);
+    arr.map(entry => {
+      result.push(entry[index]);
     });
     return result;
   };
 
-  // This is passed an Array of objects and returns an Array which contains
-  // just the values
-  const getValues = array => {
-    const result = [];
-    array.map(entry => {
-      result.push(entry[Object.keys(entry)]);
+  // This is passed an Array of Arrays and a search string and an index. It loops
+  // through the Array and for each nested Array, it checks to see if the `term`
+  // matches the string at index `termIndex`. If this is true, it gets the number
+  // at the `numIndex` and adds it to a running total.
+  const returnSumOfValues = (arr, term, termIndex, numIndex) => {
+    let total = 0;
+    arr.map(nestedArr => {
+      if (nestedArr[termIndex] === term) total += parseInt(nestedArr[numIndex]);
     });
-    return result;
-  }
+    return total;
+  };
 
-  // This is passed a string and searches through an Array of objects, looking
-  // for that string on the `name` property of the object. Once a match has been
-  // made, the value of the `name` property is stored in an Array which is returned
-  // at the end.
-  const findValuesInObject = (term, array) => {
+  // This is passed an Array which contains duplicate string values and returns
+  // a second Array which has the duplicates removed, but each element in the
+  // new Array contains an Array with the number of duplications and the
+  // original string.
+  const returnDuplicationLog = arr => {
     const result = [];
-    array.map(obj => {
-      const key = Object.keys(obj)[0];
-      if (key === term) result.push(obj[key]);
-    });
-    return result;
-  }
-
-  // This is the same as above, but it looks for values and returns the name.
-  const findNamesInObject = (term, array) => {
-    const result = [];
-    array.map(obj => {
-      const key = Object.keys(obj)[0];
-      const value = obj[key];
-      if (value === term) result.push(key);
-    });
-    return result;
-  }
-
-  // This attempts to split the data into a category which labels the data and the value of the data
-  const init = () => {
-    const set1 = getKeys(data);
-    const set2 = getValues(data);
-
-    console.log("Bonk!",set1, intCheck(set1));
-
-    // Are the keys numeric?
-    if (intCheck(set1)) {
-      console.log("Numbers detected1");
-      const result = [];
-      const checked = [];
-      // This is always the other term from set1
-      data.map((entry) => {
-        const label = Object.keys(entry)[1];
-        console.log(entry);
-        // Only continue if we haven't calculated this label before
-        // if (!checked.includes(label)) {
-        //   const nameArray = findNamesInObject(label, data);
-        //   result.push({ [label]: nameArray.reduce((newVal, currentVal) => newVal + currentVal)});
-        //   checked.push(label);
-        // }
+    const completedStrings = [];
+    arr.map(string => {
+      result.map(item => {
+        if (item[0] === string) item[1] += 1;
       });
-    }
+      if (!completedStrings.includes(string)) result.push([string, 1]);
+      completedStrings.push(string);
+    });
+    return result;
+  }
 
-    // Are the values numeric?
-    if (intCheck(set2)) {
+  // This attempts to split the data into a category which labels the
+  // data and the value of the data
+  const init = () => {
+    const set0 = getNestedArrayItem(data, 0);
+    const set1 = getNestedArrayItem(data, 1);
+    const zeroHasNumber = intCheck(set0);
+    const oneHasNumber = intCheck(set1);
+
+    // We've found numeric data on one of the nested Arrays
+    if (zeroHasNumber || oneHasNumber) {
+      let a, b;
+      if (zeroHasNumber) {
+        a = 1;
+        b = 0;
+      } else {
+        a = 0;
+        b = 1;
+      }
       const result = [];
       const checked = [];
-      console.log("Numbers detected2");
-      // This is always the other term from set1
       data.map((entry) => {
-        const label = Object.keys(entry)[0];
+        // This is the text which labels the data
+        const label = entry[a];
         // Only continue if we haven't calculated this label before
         if (!checked.includes(label)) {
-          const valueArray = findValuesInObject(label, data);
-          result.push({ [label]: valueArray.reduce((newVal, currentVal) => newVal + currentVal)});
+          const setValues = returnSumOfValues(data, label, a, b);
+          result.push([label, setValues]);
           checked.push(label);
         }
       });
     }
-    // Do either of the sets of data have duplicate values?
-    else if (duplicateCheck(set1) || duplicateCheck(set2)) {
-      console.log("duplicate detected");
-      // The number of duplicated values determines the size of the doughnut slice
-      if (duplicateCheck(set1)) {
-        set1.map(entry => {
-          //console.log(`${entry} appears in the Array ${set1.filter(x => x === entry).length} times`);
-        });
-      } else {
-        // set 2 sets the size
-        set2.map(entry => {
-          //console.log(`${entry} appears in the Array ${set2.filter(x => x === entry).length} times`);
-        });
-      }
 
+    // We've found duplicate string values in set 0
+    else if (duplicateCheck(set0)) {
+      console.log(returnDuplicationLog(set0));
+    }
+
+    // We've found duplicate string values in set 1
+    else if (duplicateCheck(set1)) {
+      console.log(returnDuplicationLog(set1));
     }
 
     else {
       // We can't do anything with this data
       console.log("I can't do anything with this data");
     }
-    //console.log(set1, duplicateCheck(set1), set2, duplicateCheck(set2))
   };
 
   init();
