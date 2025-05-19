@@ -3,6 +3,30 @@ import classes from './compare-data.module.css';
 
 const Doughnut = ({ data, selectedTypes }) => {
 
+  // This will contain the CSS variables to generate the doughnut chart
+  let styleObj = {
+    "--value1": "5%",
+    "--value2": "10%",
+    "--value3": "15%",
+    "--value4": "20%",
+    "--value5": "25%",
+    "--value6": "30%",
+    "--value7": "35%",
+    "--value8": "40%",
+    "--value9": "45%",
+    "--value10": "50%",
+    "--value11": "55%",
+    "--value12": "60%",
+    "--value13": "65%",
+    "--value14": "70%",
+    "--value15": "75%",
+    "--value16": "80%",
+    "--value17": "85%",
+    "--value18": "90%",
+    "--value19": "95%",
+    "--value20": "100%",
+  };
+
   // Checks an Array to see if it has duplicate values
   const duplicateCheck = (array) => (new Set(array)).size !== array.length;
 
@@ -55,6 +79,24 @@ const Doughnut = ({ data, selectedTypes }) => {
     return result;
   }
 
+  const generateStyleObj = arr => {
+    // This will be the total of all the values being compared
+    let total = 0;
+    const styleObj2 = {};
+    arr.map(entry => {
+      total += entry[1];
+    });
+    // This is the smallest segment of the doughnut
+    const unit = 100 * (1 / total);
+    let percentTotal = 0;
+    arr.map((item, index) => {
+      const itemSize = item[1] * unit;
+      percentTotal += itemSize;
+      styleObj2[`--value${index + 1}`] = `${percentTotal}%`;
+    });
+    console.log(styleObj2);
+  };
+
   // This attempts to split the data into a category which labels the
   // data and the value of the data
   const init = () => {
@@ -85,16 +127,17 @@ const Doughnut = ({ data, selectedTypes }) => {
           checked.push(label);
         }
       });
+      generateStyleObj(result);
     }
 
     // We've found duplicate string values in set 0
     else if (duplicateCheck(set0)) {
-      console.log(returnDuplicationLog(set0));
+      generateStyleObj(returnDuplicationLog(set0));
     }
 
     // We've found duplicate string values in set 1
     else if (duplicateCheck(set1)) {
-      console.log(returnDuplicationLog(set1));
+      generateStyleObj(returnDuplicationLog(set1));
     }
 
     else {
@@ -105,8 +148,10 @@ const Doughnut = ({ data, selectedTypes }) => {
 
   init();
 
-  const styleObj = {
-    "--value": "5%",
+  return (
+    <figure className={classes.pie}>
+      <p style={{
+    "--value1": "5%",
     "--value2": "10%",
     "--value3": "15%",
     "--value4": "20%",
@@ -126,11 +171,7 @@ const Doughnut = ({ data, selectedTypes }) => {
     "--value18": "90%",
     "--value19": "95%",
     "--value20": "100%",
-  }
-
-  return (
-    <figure className={classes.pie}>
-      <p style={styleObj}>Hullo</p>
+  }}>Hullo</p>
       <section className={classes.key} aria-label="Key">
         {data.map((entry, index) => (
           <dl key={index}>

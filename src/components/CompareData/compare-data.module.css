@@ -1,6 +1,6 @@
 /* This doughnut chart can display no more than 20 different values */
 .pie {
-  --barColour: Crimson;
+  --barColour1: Crimson;
   --barColour2: DarkRed;
   --barColour3: FireBrick;
   --barColour4: IndianRed;
@@ -28,8 +28,8 @@
   background:
      conic-gradient(var(--bg-body) 0, var(--bg-body) 0) padding-box,
      conic-gradient(
-       var(--barColour) var(--value),
-       var(--barColour2, transparent) var(--value) var(--value2, 100%),
+       var(--barColour1) var(--value),
+       var(--barColour2, transparent) var(--value1) var(--value2, 100%),
        var(--barColour3, transparent) var(--value2, 100%) var(--value3, 100%),
        var(--barColour4, transparent) var(--value3, 100%) var(--value4, 100%),
        var(--barColour5, transparent) var(--value4, 100%) var(--value5, 100%),
@@ -51,7 +51,7 @@
        transparent var(--value20, 100%) 100%
      ) border-box;
   /* This transparent border represents the width of the doughnut */
-  border: solid 1rem transparent;
+  border: solid 2rem transparent;
   border-radius: 50%;
   display: flex;
   flex: 1;
@@ -79,7 +79,7 @@
   display: flex;
 }
 
-.key dl:nth-child(1) dt { background: var(--barColour);}
+.key dl:nth-child(1) dt { background: var(--barColour1);}
 .key dl:nth-child(2) dt { background: var(--barColour2);}
 .key dl:nth-child(3) dt { background: var(--barColour3);}
 .key dl:nth-child(4) dt { background: var(--barColour4);}
