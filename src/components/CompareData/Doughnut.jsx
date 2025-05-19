@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import camelToSentenceCase from '../../utils/camel-to-sentence-case/camel-to-sentence-case.js';
+import { getNestedArrayItem, returnSumOfValues, returnDuplicationLog, intCheck, duplicateCheck } from '../../utils/array-utils/array-utils.js';
 import classes from './compare-data.module.css';
 
 const Doughnut = ({ data, selectedTypes }) => {
@@ -8,59 +9,6 @@ const Doughnut = ({ data, selectedTypes }) => {
   const [ chartData, setChartData ] = useState([]);
   // This will contain the CSS variables to generate the doughnut chart
   const [ styleObject, setStyleObject ] = useState({});
-
-
-  // Checks an Array to see if it has duplicate values
-  const duplicateCheck = (array) => (new Set(array)).size !== array.length;
-
-  // Checks an Array to see if it has any non-integer values. If it does,
-  // it returns `false`.
-  const intCheck = array => {
-    let result = true;
-    array.map(entry => {
-      if (!Number.isInteger(entry)) result = false;
-    })
-    return result;
-  };
-
-  // This is passed an Array and an index and extracts all elements which
-  // appear at a specified index on Arrays nested within it.
-  const getNestedArrayItem = (arr, index) => {
-    const result = [];
-    arr.map(entry => {
-      result.push(entry[index]);
-    });
-    return result;
-  };
-
-  // This is passed an Array of Arrays and a search string and an index. It loops
-  // through the Array and for each nested Array, it checks to see if the `term`
-  // matches the string at index `termIndex`. If this is true, it gets the number
-  // at the `numIndex` and adds it to a running total.
-  const returnSumOfValues = (arr, term, termIndex, numIndex) => {
-    let total = 0;
-    arr.map(nestedArr => {
-      if (nestedArr[termIndex] === term) total += parseInt(nestedArr[numIndex]);
-    });
-    return total;
-  };
-
-  // This is passed an Array which contains duplicate string values and returns
-  // a second Array which has the duplicates removed, but each element in the
-  // new Array contains an Array with the number of duplications and the
-  // original string.
-  const returnDuplicationLog = arr => {
-    const result = [];
-    const completedStrings = [];
-    arr.map(string => {
-      result.map(item => {
-        if (item[0] === string) item[1] += 1;
-      });
-      if (!completedStrings.includes(string)) result.push([string, 1]);
-      completedStrings.push(string);
-    });
-    return result;
-  }
 
   const generateStyleObj = arr => {
     // This will be the total of all the values being compared
