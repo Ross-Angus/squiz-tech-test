@@ -3,7 +3,11 @@
   gap: var(--gutter);
 }
 
-.stats {
+@media (width < 50rem) {
+  .row { flex-direction: column; }
+}
+
+.clientInfo {
   aspect-ratio: 1;
   background: hsl(var(--complete), var(--light-default));
   border-radius: 50%;
@@ -16,7 +20,7 @@
   position: relative;
 }
 
-.stats dt {
+.clientInfo dt {
   background: hsl(var(--complete), var(--light-default));
   font-style: italic;
   left: 0;
@@ -28,7 +32,7 @@
   width: 50%;
 }
 
-.stats dd {
+.clientInfo dd {
   display: flex;
   flex-direction: column;
   flex-grow: 2;
