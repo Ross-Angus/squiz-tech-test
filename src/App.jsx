@@ -15,9 +15,7 @@ function App() {
   useEffect(() => { CacheData(setClientList) }, []);
 
   let keyArray = [];
-  if (clientList) {
-    keyArray = objectKeyToArray(clientList[0]);
-  }
+  if (clientList) keyArray = objectKeyToArray(clientList[0]);
 
   return (
     <>

@@ -58,6 +58,13 @@ h1 {
   line-height: 1.1;
 }
 
+h2, caption {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0 0 var(--gutter);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

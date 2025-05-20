@@ -64,3 +64,15 @@ export const getUniqueValues = (data, term) => {
   valuesArray.sort();
   return valuesArray;
 }
+
+// This is passed a data set, a name and a value. It `maps` through the
+// Array and looks for a `name` and `value` property which matches the
+// parameters. For each match, it saves the result and then returns an
+// Array of results at the end.
+export const getClientsByNameAndValue = (data, name, value) => {
+  const result = [];
+  data.map(client => {
+    client[name] === value && result.push(client);
+  });
+  return result;
+}
