@@ -58,11 +58,11 @@ h1 {
   line-height: 1.1;
 }
 
-h2, caption, figcaption {
+h2, caption, figcaption, legend {
   font-size: 2em;
   font-weight: bold;
   line-height: 1.1;
-  margin: 0 0 var(--gutter);
+  margin: 0 auto var(--gutter);
 }
 
 @media (prefers-color-scheme: light) {
