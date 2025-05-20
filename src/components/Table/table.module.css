@@ -3,6 +3,8 @@ table {
   width: 100%;
 }
 
+caption { width: 100%; }
+
 th, td {
   backdrop-filter: brightness(50%);
   padding: 0.25rem 0.5rem;
