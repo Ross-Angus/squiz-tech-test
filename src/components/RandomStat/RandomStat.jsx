@@ -1,5 +1,4 @@
-import '../../styles/components/card.css';
-import classes from './random-stat.module.css';
+import ClientInfo from '../ClientInfo/ClientInfo.jsx';
 
 const RandomStat = ({ data }) => {
 
@@ -7,26 +6,12 @@ const RandomStat = ({ data }) => {
   const rn = (i = 1) => ~~(Math.random()*i);
 
   const randData = data[rn(data.length)];
-  console.log(randData);
 
   return (
-    <aside aria-label={randData.name} className="card">
-      <h2>{randData.name}</h2>
-      <div class={classes.row}>
-        <dl class={classes.stats}>
-          <dt>Country of origin</dt>
-          <dd className={classes.larger}>{randData.country}</dd>
-        </dl>
-        <dl class={classes.stats}>
-          <dt>Industry</dt>
-          <dd className={classes.large}>{randData.industry}</dd>
-        </dl>
-        <dl class={classes.stats}>
-          <dt>Number of employees</dt>
-          <dd className={classes.largest}>{randData.numberOfEmployees}</dd>
-        </dl>
-      </div>
-    </aside>
+    <>
+      <h2>Random client statistic:</h2>
+      <ClientInfo clientData={randData} colourClass=""/>
+    </>
   )
 };
 

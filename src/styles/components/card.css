@@ -34,7 +34,7 @@
   height: var(--gutter);
 }
 
-/* Colour variation */
+/* Colour variation - "info" is the default */
 .card--warning { background: hsl(var(--warning), var(--light-default)); }
 .card--warning::before { background: hsl(var(--warning), var(--light-shadow1)); }
 .card--warning::after { background: hsl(var(--warning), var(--light-shadow2)); }
@@ -42,3 +42,11 @@
 .card--progress { background: hsl(var(--progress), var(--light-default)); }
 .card--progress::before { background: hsl(var(--progress), var(--light-shadow1)); }
 .card--progress::after { background: hsl(var(--progress), var(--light-shadow2)); }
+
+.card--primary { background: hsl(var(--primary), var(--light-default)); }
+.card--primary::before { background: hsl(var(--primary), var(--light-shadow1)); }
+.card--primary::after { background: hsl(var(--primary), var(--light-shadow2)); }
+
+.card--complete { background: hsl(var(--complete), var(--light-default)); }
+.card--complete::before { background: hsl(var(--complete), var(--light-shadow1)); }
+.card--complete::after { background: hsl(var(--complete), var(--light-shadow2)); }

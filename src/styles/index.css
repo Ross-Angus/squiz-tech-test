@@ -3,16 +3,18 @@
   --txt-body: #eee;
   --txt-contrast: #111;
   --gutter: 1rem;
-  --keyline-width: 10px;
+  --keyline-width: 2px;
   --iso-shadow: calc(var(--gutter) * -1) var(--gutter) 0;
 
   /* Colours in HLS format, but without the lightness value */
-  --warning:  358.19, 100%;
-  --progress: 43.86, 100%;
-  --complete: 83.19, 68.2%;
-  --info:     203.16, 77.38%;
-  --primary:  265.35, 31.84%;
-  --light-default: 50%;
+  --warning:  358, 60%;
+  --progress: 44, 100%;
+  --complete: 83, 68.2%;
+  --info:     203, 77.38%;
+  --primary:  265, 31.84%;
+
+  /* These are used with the above colours to create the isometric boxes */
+  --light-default: 55%;
   --light-shadow1: 40%;
   --light-shadow2: 30%;
 
