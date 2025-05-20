@@ -18,7 +18,7 @@ th, td {
   }
 
   tr {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--gutter);
   }
 
   thead tr {
@@ -39,7 +39,7 @@ th, td {
     content: attr(data-label);
     flex: 0 0 50%;
     font-weight: bold;
-    padding: 0 1rem;
+    padding: 0 var(--gutter);
     text-align: right;
   }
 }

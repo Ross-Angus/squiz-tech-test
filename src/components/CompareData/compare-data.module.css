@@ -56,8 +56,8 @@
   display: flex;
   font-weight: bold;
   justify-content: center;
-  margin: 1em;
-  padding: 1em;
+  margin: var(--gutter);
+  padding: var(--gutter);
   text-align: center;
   transition: all 0.5s;
 }

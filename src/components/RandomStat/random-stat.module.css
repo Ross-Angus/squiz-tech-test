@@ -1,0 +1,38 @@
+.row {
+  display: flex;
+  gap: var(--gutter);
+}
+
+.stats {
+  aspect-ratio: 1;
+  background: #333;
+  border-radius: 50%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+}
+
+.stats dt {
+  font-style: italic;
+}
+
+.stats dd {
+  margin: 0;
+}
+
+.large   {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.larger  {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.largest {
+  font-size: 7rem;
+  line-height: 0.8;
+}
