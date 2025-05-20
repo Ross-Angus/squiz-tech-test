@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../../styles/forms/inputs.css';
 import ClientInfo from '../ClientInfo/ClientInfo.jsx';
 
 const Search = ({data}) => {

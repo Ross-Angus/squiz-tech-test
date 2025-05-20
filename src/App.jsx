@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './styles/App.css'
+import './styles/forms/inputs.css';
+import './styles/forms/buttons.css';
 import CONSTANTS from './global/constants.json';
 import objectKeyToArray from './utils/object-key-to-array/object-key-to-array.js';
 import CacheData from './components/CacheData/CacheData.js';

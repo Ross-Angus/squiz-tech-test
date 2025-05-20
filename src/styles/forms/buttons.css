@@ -1,0 +1,46 @@
+button {
+  background: hsl(var(--info), var(--light-default));
+  border: none;
+  color: var(--txt-contrast);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 0 var(--gutter) var(--gutter);
+  padding: 0.6rem 1.2rem;
+  position: relative;
+  transition: all 0.2s;
+}
+
+button::before, button::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  transition: all 0.2s;
+}
+
+/* The left hand edge */
+button::before {
+  background: hsl(var(--info), var(--light-shadow1));
+  top: 0;
+  transform: translate(-100%, 0) skew(0, -45deg);
+  transform-origin: 100% 0;
+  width: calc(var(--gutter) / 2);
+}
+
+/* The bottom edge */
+button::after {
+  background: hsl(var(--info), var(--light-shadow2));
+  right: 0;
+  transform: translate(0, 100%) skew(-45deg, 0);
+  transform-origin: 0 0;
+  height: calc(var(--gutter) / 2);
+}
+
+button:focus, button:hover {
+  transform: translate(calc(var(--gutter) / -2), calc(var(--gutter) / 2));
+}
+
+button:focus::before, button:hover::before, button:focus::after, button:hover::after {
+  opacity: 0;
+}
