@@ -6,13 +6,16 @@
   position: relative;
 }
 
-/* The left hand edge */
-.card::before {
-  background: hsl(var(--info), var(--light-shadow1));
+.card::before, .card::after {
   bottom: 0;
   content: "";
   left: 0;
   position: absolute;
+}
+
+/* The left hand edge */
+.card::before {
+  background: hsl(var(--info), var(--light-shadow1));
   top: 0;
   transform: translate(-100%, 0) skew(0, -45deg);
   transform-origin: 100% 0;
@@ -22,10 +25,6 @@
 /* The bottom edge */
 .card::after {
   background: hsl(var(--info), var(--light-shadow2));
-  bottom: 0;
-  content: "";
-  left: 0;
-  position: absolute;
   right: 0;
   transform: translate(0, 100%) skew(-45deg, 0);
   transform-origin: 0 0;

@@ -1,11 +1,18 @@
-button::after {
+.sortButton span {
+  display: inline-block;
   font-size: 1.5em;
-  line-height: 0;
+  line-height: 0.8;
+  opacity: 0;
+  transition: all 0.5s;
+  transform-origin: 50% 70%;
 }
 
-.sortAscending::after {
-  content: " ⇡";
+.sortAscending span {
+  opacity: 1;
+  transform: rotate(0deg);
 }
-.sortDescending::after {
-  content: " ⇣";
+
+.sortDescending span {
+  opacity: 1;
+  transform: rotate(180deg);
 }

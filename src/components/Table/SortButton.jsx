@@ -43,8 +43,9 @@ const SortButton = ({ name, tableData, update, sortDirection, setSortDirection, 
   }
 
   return (
-    <button type="button" onClick={() => handleSort(name)} className={boolClass(name)} title={sortTitle(camelToSentenceCase(name))}>
+    <button type="button" onClick={() => handleSort(name)} className={`${classes.sortButton} ${boolClass(name)}`} title={sortTitle(camelToSentenceCase(name))}>
       {camelToSentenceCase(name)}
+      <span>⇡</span>
     </button>
   )
 }
