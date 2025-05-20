@@ -49,3 +49,18 @@ export const intCheck = array => {
 
 // Checks an Array to see if it has duplicate values
 export const duplicateCheck = (array) => (new Set(array)).size !== array.length;
+
+// This function is passed an Array and a term to search for. It loops
+// through the Array and then looks for strings which match the term
+// on the `name` property of the objects inside the Array. It only adds
+// the `value` of the property if it does not already exist in the
+// running total.
+export const getUniqueValues = (data, term) => {
+  const valuesArray = [];
+  data.map(client => {
+    const newValue = client[term];
+    !valuesArray.includes(newValue) && valuesArray.push(newValue);
+  });
+  valuesArray.sort();
+  return valuesArray;
+}

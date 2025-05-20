@@ -7,6 +7,7 @@ import Table from './components/Table/Table.jsx';
 import CompareData from './components/CompareData/CompareData.jsx';
 import RandomStat from './components/RandomStat/RandomStat.jsx';
 import Search from './components/Search/Search.jsx';
+import ClientFilter from './components/ClientFilter/ClientFilter.jsx';
 
 function App() {
   const [clientList, setClientList] = useState();
@@ -22,6 +23,7 @@ function App() {
     <>
       {clientList ? (
         <>
+          <ClientFilter data={clientList}/>
           <Search data={clientList}/>
           <RandomStat data={clientList}/>
           <CompareData data={clientList} types={keyArray}/>
