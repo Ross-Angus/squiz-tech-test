@@ -1,13 +1,14 @@
 .card {
-  background: var(--info);
-  margin: 0 0 var(--gutter) var(--gutter);
+  background: hsl(var(--info), var(--light-default));
+  color: var(--txt-contrast);
+  margin: 0 0 calc(var(--gutter) * 2) var(--gutter);
   padding: var(--gutter);
   position: relative;
 }
 
 /* The left hand edge */
 .card::before {
-  background: var(--info);
+  background: hsl(var(--info), var(--light-shadow1));
   bottom: 0;
   content: "";
   left: 0;
@@ -21,7 +22,7 @@
 
 /* The bottom edge */
 .card::after {
-  background: var(--info);
+  background: hsl(var(--info), var(--light-shadow2));
   bottom: 0;
   content: "";
   left: 0;
@@ -32,3 +33,12 @@
   transform-origin: 0 0;
   height: var(--gutter);
 }
+
+/* Colour variation */
+.card--warning { background: hsl(var(--warning), var(--light-default)); }
+.card--warning::before { background: hsl(var(--warning), var(--light-shadow1)); }
+.card--warning::after { background: hsl(var(--warning), var(--light-shadow2)); }
+
+.card--progress { background: hsl(var(--progress), var(--light-default)); }
+.card--progress::before { background: hsl(var(--progress), var(--light-shadow1)); }
+.card--progress::after { background: hsl(var(--progress), var(--light-shadow2)); }

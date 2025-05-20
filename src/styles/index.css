@@ -1,15 +1,20 @@
 :root {
   --bg-body: #242424;
   --txt-body: #eee;
+  --txt-contrast: #111;
   --gutter: 1rem;
   --keyline-width: 10px;
+  --iso-shadow: calc(var(--gutter) * -1) var(--gutter) 0;
 
-  /* Colours */
-  --warning:  #ff595e;
-  --progress: #ffca3a;
-  --complete: #8ac926;
-  --info:     #1982c4;
-  --primary:  #6a4c93;
+  /* Colours in HLS format, but without the lightness value */
+  --warning:  358.19, 100%;
+  --progress: 43.86, 100%;
+  --complete: 83.19, 68.2%;
+  --info:     203.16, 77.38%;
+  --primary:  265.35, 31.84%;
+  --light-default: 50%;
+  --light-shadow1: 40%;
+  --light-shadow2: 30%;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

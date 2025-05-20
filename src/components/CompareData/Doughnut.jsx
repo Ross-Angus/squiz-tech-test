@@ -87,7 +87,7 @@ const Doughnut = ({ data, selectedTypes }) => {
   useEffect(() => { generateStyleObj(chartData) }, [chartData]);
 
   return (
-    <figure className={classes.pie}>
+    <figure className={`${classes.pie} card card--progress`}>
       <p style={styleObject}>{`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}</p>
       <section className={classes.key} aria-label={`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}>
         {chartData.map((entry, index) => (

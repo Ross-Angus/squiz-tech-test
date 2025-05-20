@@ -26,7 +26,7 @@
   align-items: center;
   aspect-ratio: 1;
   background:
-    conic-gradient(var(--bg-body) 0, var(--bg-body) 0) padding-box,
+    conic-gradient(hsl(var(--progress), var(--light-default)) 0, hsl(var(--progress), var(--light-default)) 0) padding-box,
     conic-gradient(
       var(--barColour1) var(--value1),
       var(--barColour2, transparent) var(--value1) var(--value2, 100%),
@@ -87,7 +87,7 @@
 }
 
 .key dt strong {
-  background: var(--bg-body);
+  background: hsl(var(--progress), var(--light-default));
   padding: 0.2rem 0.5rem;
 }
 

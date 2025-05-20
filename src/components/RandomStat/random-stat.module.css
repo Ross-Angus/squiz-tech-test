@@ -5,30 +5,44 @@
 
 .stats {
   aspect-ratio: 1;
-  background: #333;
+  background: hsl(var(--complete), var(--light-default));
   border-radius: 50%;
+  box-shadow: var(--iso-shadow) hsl(var(--complete), var(--light-shadow1));
+  color: var(--txt-contrast);
   display: flex;
   flex: 1;
   flex-direction: column;
+  margin: 0 0 var(--gutter) var(--gutter);
+  position: relative;
+}
+
+.stats dt {
+  background: hsl(var(--complete), var(--light-default));
+  font-style: italic;
+  left: 0;
+  line-height: 1;
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  width: 50%;
+}
+
+.stats dd {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
   justify-content: center;
   margin: 0;
 }
 
-.stats dt {
-  font-style: italic;
-}
-
-.stats dd {
-  margin: 0;
-}
-
 .large   {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.1;
 }
 
 .larger  {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1;
 }
 
