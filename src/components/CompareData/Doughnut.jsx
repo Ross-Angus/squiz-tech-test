@@ -88,6 +88,7 @@ const Doughnut = ({ data, selectedTypes }) => {
 
   return (
     <figure className={`${classes.pie} card card--progress`}>
+      <figcaption>Data comparison of {camelToSentenceCase(selectedTypes[0])} with {camelToSentenceCase(selectedTypes[1])}</figcaption>
       <p style={styleObject}>{`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}</p>
       <section className={classes.key} aria-label={`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}>
         {chartData.map((entry, index) => (
@@ -97,7 +98,6 @@ const Doughnut = ({ data, selectedTypes }) => {
           </dl>
         ))}
       </section>
-      <figcaption>Data comparison of {camelToSentenceCase(selectedTypes[0])} with {camelToSentenceCase(selectedTypes[1])}</figcaption>
     </figure>
   )
 };

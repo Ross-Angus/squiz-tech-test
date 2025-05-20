@@ -58,7 +58,7 @@ h1 {
   line-height: 1.1;
 }
 
-h2, caption {
+h2, caption, figcaption {
   font-size: 2em;
   font-weight: bold;
   line-height: 1.1;
