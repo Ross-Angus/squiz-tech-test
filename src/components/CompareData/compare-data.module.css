@@ -59,6 +59,7 @@
   margin: 1em;
   padding: 1em;
   text-align: center;
+  transition: all 0.5s;
 }
 
 .pieChoice p {

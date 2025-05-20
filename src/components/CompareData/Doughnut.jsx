@@ -62,6 +62,7 @@ const Doughnut = ({ data, selectedTypes }) => {
       setChartData(result);
     }
 
+    // This needs to change the key
     // We've found duplicate string values in set 0
     else if (duplicateCheck(set0)) {
       const result = returnDuplicationLog(set0);
