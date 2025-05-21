@@ -6,7 +6,7 @@ table {
 caption { width: 100%; }
 
 th, td {
-  backdrop-filter: brightness(50%);
+  backdrop-filter: brightness(90%);
   padding: 0.25rem 0.5rem;
 }
 
@@ -25,7 +25,7 @@ th, td {
   }
 
   thead tr {
-    backdrop-filter: brightness(50%);
+    backdrop-filter: brightness(90%);
     flex-wrap: wrap;
     justify-content: center;
   }
