@@ -24,10 +24,7 @@ function App() {
   return (
     <>
       {clientList ? (
-        <>
-          <ClientFilter data={clientList} />
-          <Search data={clientList} />
-          <RandomStat data={clientList} />
+        <main>
           <CompareData data={clientList} types={keyArray} />
           <Table
             caption={CONSTANTS.DATA_NAME}
@@ -35,9 +32,12 @@ function App() {
             clientList={clientList}
             setClientList={setClientList}
           />
-        </>
+          <RandomStat data={clientList} />
+          <ClientFilter data={clientList} />
+          <Search data={clientList} />
+        </main>
       ) : (
-        "Loading"
+        <p>Loading...</p>
       )}
     </>
   );
