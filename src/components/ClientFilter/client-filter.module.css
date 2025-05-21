@@ -1,0 +1,19 @@
+.filter {
+  display: flex;
+}
+
+/* Matching table breakpoint, for visual continuity */
+@media (width < 70rem) {
+  .filter {
+    flex-direction: column;
+  }
+}
+
+.controls {
+  flex-shrink: 2;
+  text-align: left;
+}
+
+.result {
+  flex-grow: 2;
+}

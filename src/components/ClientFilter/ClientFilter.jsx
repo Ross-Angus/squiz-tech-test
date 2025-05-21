@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import classes from './client-filter.module.css';
 import { getUniqueValues, getClientsByNameAndValue } from '../../utils/array-utils/array-utils.js';
 import camelToSentenceCase from '../../utils/camel-to-sentence-case/camel-to-sentence-case.js';
 import objectKeyToArray from '../../utils/object-key-to-array/object-key-to-array.js';
@@ -29,47 +30,51 @@ const ClientFilter = ({data}) => {
   };
 
   return (
-    <form>
+    <section className={classes.filter} aria-label="Filters">
 
-      <fieldset>
-        <legend>Filter clients by industry:</legend>
-        <p>
-          {industryList.map(industry => (
-            <button type="button" key={industry} onClick={() => {handleClick('industry', industry)}}>{industry}</button>
-          ))}
-        </p>
-      </fieldset>
+      <form className={classes.controls}>
+        <fieldset>
+          <legend>Filter clients by industry:</legend>
+          <p>
+            {industryList.map(industry => (
+              <button type="button" key={industry} onClick={() => {handleClick('industry', industry)}}>{industry}</button>
+            ))}
+          </p>
+        </fieldset>
 
-      <fieldset>
-        <legend>Filter clients by country:</legend>
-        <p>
-          {countryList.map(country => (
-            <button type="button" key={country} onClick={() => {handleClick('country', country)}}>{country}</button>
-          ))}
-        </p>
-      </fieldset>
+        <fieldset>
+          <legend>Filter clients by country:</legend>
+          <p>
+            {countryList.map(country => (
+              <button type="button" key={country} onClick={() => {handleClick('country', country)}}>{country}</button>
+            ))}
+          </p>
+        </fieldset>
+      </form>
 
       {filterResults.length > 0 && (
-        <table>
-          <caption>Clients with a <var>{searchTerm[0]}</var> matching <var>{searchTerm[1]}</var></caption>
-          <Thead>
-            <Row>
-              {headerRow.map(name => {
-                return (
-                  <HeaderCell key={name} scope="col">{camelToSentenceCase(name)}</HeaderCell>
-                )
-              })}
-            </Row>
-          </Thead>
-          <Tbody>
-            {filterResults.map(client => (
-              <ClientRow rowData={client} key={client.id}/>
-            ))}
-          </Tbody>
-        </table>
+        <div className={classes.result}>
+          <table>
+            <caption>Clients with a <var>{searchTerm[0]}</var> matching <var>{searchTerm[1]}</var></caption>
+            <Thead>
+              <Row>
+                {headerRow.map(name => {
+                  return (
+                    <HeaderCell key={name} scope="col">{camelToSentenceCase(name)}</HeaderCell>
+                  )
+                })}
+              </Row>
+            </Thead>
+            <Tbody>
+              {filterResults.map(client => (
+                <ClientRow rowData={client} key={client.id}/>
+              ))}
+            </Tbody>
+          </table>
+        </div>
       )}
 
-    </form>
+    </section>
   )
 };
 
