@@ -1,3 +1,19 @@
+# Squiz technical test
+
+## Install instructions
+
+From a terminal, type:
+
+`npm install`
+
+Once this has completed, the site can be run locally by running:
+
+`npm start`
+
+---
+
+# Original brief
+
 We would like you to create an interactive dashboard that visualizes data from an API. The dashboard should provide users with key insights and allow them to interact with the data dynamically.
 
 ## Requirements:
