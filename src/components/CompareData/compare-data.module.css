@@ -85,9 +85,11 @@
 .key dt strong {
   aspect-ratio: 1;
   border-radius: 50%;
+  box-shadow:  -5px 5px 0 #000;
   background: hsl(var(--progress), var(--light-default));
   border: solid 10px transparent;
   display: block;
+  min-width: 5ch;
   padding: 0.4rem;
 }
 
