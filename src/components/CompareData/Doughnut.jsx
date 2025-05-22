@@ -9,6 +9,8 @@ const Doughnut = ({ data, selectedTypes }) => {
   const [ chartData, setChartData ] = useState([]);
   // This will contain the CSS variables to generate the doughnut chart
   const [ styleObject, setStyleObject ] = useState({});
+  // The title of the data being compared
+  const [ dataCaption, setDataCaption ] = useState('Data');
 
   const generateStyleObj = arr => {
     // This will be the total of all the values being compared
@@ -31,13 +33,28 @@ const Doughnut = ({ data, selectedTypes }) => {
   // This attempts to split the data into two categories: something
   // which can be counted and something which acts as a label
   const generateChartData = () => {
+
     const set0 = getNestedArrayItem(data, 0);
     const set1 = getNestedArrayItem(data, 1);
     const zeroHasNumber = intCheck(set0);
     const oneHasNumber = intCheck(set1);
 
+    // If both sets of data have been chosen, use the full caption
+    if (set1[0] !== undefined) {
+      setDataCaption(`Data comparison of ${camelToSentenceCase(selectedTypes[0])} with ${camelToSentenceCase(selectedTypes[1])}`);
+    }
+
+    // If the user has chosen only one item, attempt to display that
+    // data by counting duplicates
+    if (set1[0] === undefined) {
+      const result = returnDuplicationLog(set0);
+      result.sort((a, b) => b[1] - a[1]);
+      setChartData(result);
+      setDataCaption(`Duplication count of ${camelToSentenceCase(selectedTypes[0])}`);
+    }
+
     // We've found numeric data in one of the nested Arrays
-    if (zeroHasNumber || oneHasNumber) {
+    else if (zeroHasNumber || oneHasNumber) {
       let a, b;
       if (zeroHasNumber) {
         a = 1;
@@ -62,17 +79,39 @@ const Doughnut = ({ data, selectedTypes }) => {
       setChartData(result);
     }
 
-    // This needs to change the key
     // We've found duplicate string values in set 0
     else if (duplicateCheck(set0)) {
-      const result = returnDuplicationLog(set0);
+      const dupes = returnDuplicationLog(set0);
+      const result = [];
+
+      dupes.map((result1, index) => {
+        const name = result1[0];
+        const currentResult = [];
+        set0.map((result2, i) => {
+          result2 === name && currentResult.push(set1[i]);
+        });
+        result.push([`${dupes[index][0]}: ${currentResult.join(', ')}`, dupes[index][1]]);
+      });
+
       result.sort((a, b) => b[1] - a[1]);
       setChartData(result);
     }
 
-    // We've found duplicate string values in set 1
+    // We've found duplicate string values in set 1, but not set 0
+    // (this doesn't exist in the data)
     else if (duplicateCheck(set1)) {
-      const result = returnDuplicationLog(set1);
+      const dupes = returnDuplicationLog(set1);
+      const result = [];
+
+      dupes.map((result1, index) => {
+        const name = result1[1];
+        const currentResult = [];
+        set1.map((result2, i) => {
+          result2 === name && currentResult.push(set1[i]);
+        });
+        result.push([`${dupes[index][0]}: ${currentResult.join(', ')}`, dupes[index][1]]);
+      });
+
       result.sort((a, b) => b[1] - a[1]);
       setChartData(result);
     }
@@ -88,9 +127,9 @@ const Doughnut = ({ data, selectedTypes }) => {
 
   return (
     <figure className={`${classes.pie} card card--progress`}>
-      <figcaption>Data comparison of {camelToSentenceCase(selectedTypes[0])} with {camelToSentenceCase(selectedTypes[1])}</figcaption>
-      <p style={styleObject}>{`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}</p>
-      <section className={classes.key} aria-label={`${camelToSentenceCase(selectedTypes[0])} by ${camelToSentenceCase(selectedTypes[1])}`}>
+      <figcaption>{dataCaption}</figcaption>
+      <p style={styleObject}>&#160;</p>
+      <section className={classes.key} aria-label={dataCaption}>
         {chartData.map((entry, index) => (
           <dl key={index}>
             <dt><strong>{entry[1]}</strong></dt>

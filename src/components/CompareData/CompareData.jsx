@@ -25,9 +25,7 @@ const CompareData = ({data, types}) => {
       }
 
       // Has the user chosen some data?
-      if (data1 !== undefined && data2 !== undefined) {
-        chartData.push([ data1, data2 ]);
-      }
+      data1 !== undefined && chartData.push([ data1, data2 ]);
     });
     return chartData;
   }
@@ -45,7 +43,7 @@ const CompareData = ({data, types}) => {
           {types.map(type => <ChooseType key={type} type={type} selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes}/>)}
         </p>
       </fieldset>
-      {selectedTypes.length > 1 && (
+      {selectedTypes.length > 0 && (
         <Doughnut data={selectedData()} selectedTypes={selectedTypes}/>
       )}
     </>
